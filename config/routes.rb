@@ -6,6 +6,8 @@ Today::Application.routes.draw do
   #   end
   # end
 
+  resources :outlines
+
   root to: "outlines#today"
 
 end

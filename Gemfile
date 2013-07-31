@@ -5,7 +5,11 @@ gem 'rails', '4.0.0'
 
 group :test, :development do
   gem 'sqlite3'
+end
+
+group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :production do

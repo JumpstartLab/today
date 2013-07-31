@@ -1,0 +1,25 @@
+<%= form_for @outline do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, size: 80 %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.label :publish_date %>
+    <%= f.date_field :publish_date %>
+  </div>
+
+  <br/>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body, cols: 80, rows: 15 %>
+  </div>
+
+  <br/>
+
+  <%= f.submit %>
+<% end %>
