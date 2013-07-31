@@ -30,6 +30,31 @@ describe Markdown do
       end
     end
 
+    context "valid markdown with YAML front-matter" do
+
+      let(:content) do
+        [ "---",
+          "layout: page",
+          "title: Tuesday, January 29th",
+          "---",
+          "# Hello",
+          "",
+          "Is it me you are looking for?" ].join("\n")
+      end
+
+      let(:result) do
+        [ "<h1>Hello</h1>",
+          "",
+          "<p>Is it me you are looking for?</p>",
+          ""].join("\n")
+      end
+
+      it "renders markdown into html" do
+        expect(subject.render(content)).to eq(result)
+      end
+
+    end
+
   end
 
 end

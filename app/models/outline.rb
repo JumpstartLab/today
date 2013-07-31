@@ -6,8 +6,13 @@ class Outline < ActiveRecord::Base
     find_by_publish_date(Time.now.to_date)
   end
 
+  def to_param
+    publish_date.strftime("%Y%m%d")
+  end
+
   validates :title, presence: true
   validates :body, presence: true
+  validates :publish_date, uniqueness: true
 
   before_save :default_publish_date_to_today
 

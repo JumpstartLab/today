@@ -4,15 +4,17 @@ describe Outline do
 
   subject { outline }
 
+  let(:default_publish_date) { Time.now.to_date }
+
   def outline(params = {})
-    params = { title: "Title", body: "# Body", publish_date: Time.now }.merge(params)
+    params = { title: "Title", body: "# Body", publish_date: default_publish_date }.merge(params)
     described_class.new(params)
   end
 
   describe "#publish_date" do
     it "defaults to the current date" do
       described_class.new title: "Title", body: "# Body"
-      expect(subject.publish_date).to eq(Time.now.to_date)
+      expect(subject.publish_date).to eq(default_publish_date)
     end
 
     it "does not override the existing date" do
@@ -28,10 +30,15 @@ describe Outline do
     end
   end
 
+  describe "#to_param" do
+    it "returns the publish date and not the id" do
+      expect(subject.to_param).to eq(default_publish_date.strftime("%Y%m%d"))
+    end
+  end
+
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:body) }
-
-
+  it { should validate_uniqueness_of(:publish_date) }
 
   describe "#previous" do
     context "when a previous outline exists" do

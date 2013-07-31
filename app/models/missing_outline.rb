@@ -17,7 +17,7 @@ class MissingOutline
   end
 
   def previous
-    nil
+    Outline.order("publish_date DESC").limit(1).first
   end
 
   def next

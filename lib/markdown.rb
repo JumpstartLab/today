@@ -6,7 +6,11 @@ class Markdown < Redcarpet::Render::XHTML
 
   def self.render(content)
     markdown = Redcarpet::Markdown.new(Markdown, options)
-    markdown.render(content)
+    markdown.render strip_yaml_frontmatter(content)
+  end
+
+  def self.strip_yaml_frontmatter(content)
+    content.gsub(/\A---\n(.+\n)*^---/,'')
   end
 
   def self.options
