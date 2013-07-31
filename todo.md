@@ -2,9 +2,13 @@
 * fix yaml front matter
 * change all liquid tags for {% page_url %} to just be tutorials.jumpstartlab.com
 
+* js: navigation to specific date or index page
 * js: in-place edit for outline
 * js: "today", "yesterday" and "tomorrow" when applicable
 * js: popover on "The Beginning" and "The End"
+
+* better looking index page
+* ability to delete an outline
 
 * support for existing liquid tags: irb terminal
 
