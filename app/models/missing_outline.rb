@@ -1,5 +1,9 @@
 class MissingOutline
 
+  def initialize(publish_date = default_publish_date)
+    @publish_date = publish_date
+  end
+
   def title
     %{Missing}
   end
@@ -12,16 +16,18 @@ class MissingOutline
     Markdown.render(body)
   end
 
-  def publish_date
+  attr_reader :publish_date
+
+  def default_publish_date
     Time.now.to_date
   end
 
   def previous
-    Outline.order("publish_date DESC").limit(1).first
+    Outline.where("publish_date < ?",publish_date).order("publish_date DESC").first
   end
 
   def next
-    nil
+    Outline.where("publish_date > ?",publish_date).order("publish_date ASC").first
   end
 
 end

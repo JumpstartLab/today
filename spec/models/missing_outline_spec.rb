@@ -18,10 +18,17 @@ describe MissingOutline do
     expect(subject.publish_date).to eq Time.now.to_date
   end
 
+  context "when created with a publish date" do
+    subject { described_class.new 2.days.ago.to_date }
+    it "has the specified publish date" do
+      expect(subject.publish_date).to eq 2.days.ago.to_date
+    end
+  end
+
   describe "#previous" do
-    context "when there is at least one outline" do
+    context "when there is at least one earlier outline" do
       it "will be returned" do
-        outline = Outline.create title: "Title", body: "Body"
+        outline = Outline.create title: "Title", body: "Body", publish_date: 2.days.ago.to_date
         expect(subject.previous).to eq outline
       end
     end
@@ -33,8 +40,19 @@ describe MissingOutline do
     end
   end
 
-  it "there is no 'next' outline" do
-    expect(subject.next).to be_nil
+  describe "#next" do
+    context "when there is at least one newer outline" do
+      it "will be returned" do
+        outline = Outline.create title: "Title", body: "Body", publish_date: 2.days.from_now.to_date
+        expect(subject.next).to eq outline
+      end
+    end
+
+    context "when there are no newer outlines" do
+      it "returns nil" do
+        expect(subject.next).to be_nil
+      end
+    end
   end
 
 
