@@ -50,7 +50,7 @@
 </script>
 
 <%= content_for :footer do %>
-  <li><%= link_to "new", new_outline_path %></li>
+  <li><%= link_to "new", new_outline_path(outline: { publish_date: @schedule.current.to_param }) %></li>
   <% if @schedule.can_edit? %>
     <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
   <% end %>

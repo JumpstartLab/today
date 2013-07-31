@@ -18,10 +18,20 @@ describe MissingOutline do
     expect(subject.publish_date).to eq Time.now.to_date
   end
 
+  it "returns the correct #to_param" do
+    expected_to_param = Time.now.to_date.strftime("%Y%m%d")
+    expect(subject.to_param).to eq expected_to_param
+  end
+
   context "when created with a publish date" do
     subject { described_class.new 2.days.ago.to_date }
     it "has the specified publish date" do
       expect(subject.publish_date).to eq 2.days.ago.to_date
+    end
+
+    it "returns that value as the #to_param" do
+      expected_to_param = 2.days.ago.to_date.strftime("%Y%m%d")
+      expect(subject.to_param).to eq expected_to_param
     end
   end
 
@@ -54,6 +64,5 @@ describe MissingOutline do
       end
     end
   end
-
 
 end

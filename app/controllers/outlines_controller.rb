@@ -5,11 +5,11 @@ class OutlinesController < ApplicationController
   end
 
   def show
-    @outline = current_outline
+    redirect_to schedule_path(current_outline)
   end
 
   def new
-    @outline = Outline.new
+    @outline = Outline.new(default_new_params)
   end
 
   def create
@@ -51,6 +51,10 @@ class OutlinesController < ApplicationController
 
   def outline_params
     params.require(:outline).permit(:title,:body,:publish_date)
+  end
+
+  def default_new_params
+    { publish_date: Time.now.to_date }.merge(outline_params)
   end
 
 end

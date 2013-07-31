@@ -4,6 +4,10 @@ class MissingOutline
     @publish_date = publish_date
   end
 
+  def to_param
+    publish_date.strftime("%Y%m%d")
+  end
+
   def title
     %{Missing}
   end
