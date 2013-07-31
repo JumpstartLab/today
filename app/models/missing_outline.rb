@@ -16,4 +16,12 @@ class MissingOutline
     Time.now.to_date
   end
 
+  def previous
+    nil
+  end
+
+  def next
+    nil
+  end
+
 end

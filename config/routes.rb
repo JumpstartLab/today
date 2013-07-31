@@ -8,6 +8,8 @@ Today::Application.routes.draw do
 
   resources :outlines
 
-  root to: "outlines#today"
+  root to: "schedule#show"
+
+  get "/:id", to: "schedule#show", as: "schedule"
 
 end

@@ -3,7 +3,7 @@ require 'markdown'
 class Outline < ActiveRecord::Base
 
   def self.today
-    where(publish_date: Time.now.to_date).first
+    find_by_publish_date(Time.now.to_date)
   end
 
   validates :title, presence: true
@@ -17,6 +17,14 @@ class Outline < ActiveRecord::Base
 
   def default_publish_date_to_today
     self.publish_date = Time.now unless publish_date
+  end
+
+  def previous
+    self.class.where("publish_date < ?",publish_date).order("publish_date DESC").first
+  end
+
+  def next
+    self.class.where("publish_date > ?",publish_date).order("publish_date ASC").first
   end
 
 end

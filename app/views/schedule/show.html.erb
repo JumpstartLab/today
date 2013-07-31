@@ -1,0 +1,18 @@
+<%= content_for :navigation do %>
+  <li>
+    <%= previous_link @schedule.previous %>
+  </li>
+  <li>
+    <a href="#"><%= @schedule.publish_date %></a>
+  </li>
+  <li>
+    <%= next_link @schedule.next %>
+  </li>
+<% end %>
+
+<%= @schedule.body %>
+
+<%= content_for :footer do %>
+  <li><%= link_to "new", new_outline_path %></li>
+  <li><%= link_to "edit", edit_outline_path(@schedule) %></li>
+<% end %>
