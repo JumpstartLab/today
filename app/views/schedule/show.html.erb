@@ -14,5 +14,5 @@
 
 <%= content_for :footer do %>
   <li><%= link_to "new", new_outline_path %></li>
-  <li><%= link_to "edit", edit_outline_path(@schedule) %></li>
+  <li><%= link_to "edit", edit_outline_path(@schedule.current) %></li>
 <% end %>
