@@ -10,9 +10,28 @@
   </li>
 <% end %>
 
-<%= @schedule.body %>
+<div class="content-live">
+  <%= @schedule.body %>
+</div>
+
+<div class="content-edit" style="display: none;">
+  <%= render partial: 'outlines/form', locals: { outline: @schedule.current } %>
+  <br/>
+</div>
+
+<script>
+
+  $(function() {
+    $(".toggle-content-edit").on("click",function(event) {
+      event.preventDefault();
+      $(".content-live").toggle();
+      $(".content-edit").toggle();
+    });
+  });
+
+</script>
 
 <%= content_for :footer do %>
   <li><%= link_to "new", new_outline_path %></li>
-  <li><%= link_to "edit", edit_outline_path(@schedule.current) %></li>
+  <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
 <% end %>
