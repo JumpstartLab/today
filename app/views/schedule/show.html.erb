@@ -3,21 +3,26 @@
     <%= previous_link @schedule.previous %>
   </li>
   <li>
-    <a href="#"><%= @schedule.publish_date %></a>
+    <a href="#" class="schedule-current"><%= nav_date_format(@schedule.publish_date) %></a>
+    <input type="date" class="schedule-datepicker" style="display: none;" value="<%= @schedule.publish_date %>" />
   </li>
+
   <li>
     <%= next_link @schedule.next %>
   </li>
+
 <% end %>
 
 <div class="content-live">
   <%= @schedule.body %>
 </div>
 
-<div class="content-edit" style="display: none;">
-  <%= render partial: 'outlines/form', locals: { outline: @schedule.current } %>
-  <br/>
-</div>
+<% if @schedule.can_edit? %>
+  <div class="content-edit" style="display: none;">
+    <%= render partial: 'outlines/form', locals: { outline: @schedule.current } %>
+    <br/>
+  </div>
+<% end %>
 
 <script>
 
@@ -27,11 +32,26 @@
       $(".content-live").toggle();
       $(".content-edit").toggle();
     });
+
+    $(".schedule-current").on("click",function(event) {
+      event.preventDefault();
+      $(this).toggle();
+      $(".schedule-datepicker").toggle();
+    });
+
+    $(".schedule-datepicker").on("focusout",function(event) {
+      event.preventDefault();
+      var newDate = $(this).val().replace(/-/g,'');
+      window.location.href= "/" + newDate;
+    });
+
   });
 
 </script>
 
 <%= content_for :footer do %>
   <li><%= link_to "new", new_outline_path %></li>
-  <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
+  <% if @schedule.can_edit? %>
+    <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
+  <% end %>
 <% end %>
