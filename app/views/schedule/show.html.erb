@@ -4,7 +4,7 @@
   </li>
   <li>
     <a href="#" class="schedule-current"><%= nav_date_format(@schedule.publish_date) %></a>
-    <input type="date" class="schedule-datepicker" style="display: none;" value="<%= @schedule.publish_date %>" />
+    <input type="date" class="schedule-datepicker" style="display: none;" value="<%= @schedule.publish_date %>" data-original="<%= @schedule.publish_date %>" />
   </li>
 
   <li>
@@ -33,7 +33,7 @@
       $(".content-edit").toggle();
     });
 
-    $(".schedule-current").on("click",function(event) {
+    $(".schedule-current").on("mouseover",function(event) {
       event.preventDefault();
       $(this).toggle();
       $(".schedule-datepicker").toggle();
@@ -41,8 +41,14 @@
 
     $(".schedule-datepicker").on("focusout",function(event) {
       event.preventDefault();
+
       var newDate = $(this).val().replace(/-/g,'');
-      window.location.href= "/" + newDate;
+      var originalDate = $(this).data("original").replace(/-/g,'');
+
+      if (newDate !== originalDate) {
+        window.location.href= "/" + newDate;
+      }
+
     });
 
   });
