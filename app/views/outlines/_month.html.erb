@@ -1,0 +1,16 @@
+<div style="padding-top: 20px; text-align: center;">
+  <h1>
+  <%= outlines.first.publish_date.strftime("%B") %>
+  </h1>
+</div>
+
+<%= calendar_for(outlines, year: year, month: month) do |t| %>
+  <%= t.head('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday') %>
+  <%= t.day do |day, outlines| %>
+    <%= day.day %>
+    <br/>
+    <% outlines.each do |outline| %>
+      <%= link_to outline.title, schedule_path(outline) %>
+    <% end %>
+  <% end %>
+<% end %>

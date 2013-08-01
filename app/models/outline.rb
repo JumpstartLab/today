@@ -10,6 +10,10 @@ class Outline < ActiveRecord::Base
     publish_date.strftime("%Y%m%d")
   end
 
+  def date
+    publish_date
+  end
+
   validates :title, presence: true
   validates :body, presence: true
   validates :publish_date, uniqueness: true

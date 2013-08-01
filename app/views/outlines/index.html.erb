@@ -1,3 +1,17 @@
-<h1>Index</h1>
+<div class="calendars">
+<% @outlines.each do |year,outlines_by_month| %>
+  <% outlines_by_month.each do |month,outlines| %>
 
-<%= render partial: "outlines/outline_summary", collection: @outlines %>
+    <div class="month">
+      <%= render partial: "month", locals: { year: year, month: month, outlines: outlines } %>
+    </div>
+
+  <% end %>
+<% end %>
+</div>
+
+<br/>
+
+<%= content_for :footer do %>
+  <li><%= link_to "new", new_outline_path %></li>
+<% end %>

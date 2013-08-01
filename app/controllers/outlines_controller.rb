@@ -1,7 +1,10 @@
 class OutlinesController < ApplicationController
 
   def index
-    @outlines = Outline.all
+    @outlines = Outline.all.group_by { |outline| outline.publish_date.year }
+    @outlines.each do |year,outlines|
+      @outlines[year] = outlines.group_by { |outline| outline.publish_date.month }
+    end
   end
 
   def show
