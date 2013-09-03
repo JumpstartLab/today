@@ -25,11 +25,11 @@ class SessionsController < ApplicationController
       login(user)
     rescue => e
       logger.warn e
-      flash[:error] = "We're having trouble with logins right now. Please come back later."
+      flash[:error] = "We're having trouble with Github logins right now. Please come back later."
     end
 
     if current_user.guest?
-      flash[:error] = "We're having trouble with logins right now. Please come back later."
+      flash[:error] = "We're unable to log you in right now. Please come back later."
     end
 
     if current_user.admin?
