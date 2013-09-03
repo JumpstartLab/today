@@ -2,7 +2,17 @@
   <div class="wrapper">
     <ul class="footer-nav">
       <%= yield :footer %>
+
+      <li>
+        <% if current_user.guest? %>
+          <%= link_to "login", login_path %>
+        <% else %>
+          <%= link_to "logout", logout_path, method: :delete %>
+        <% end %>
+      </li>
+
     </ul>
+
     <p>Content © Casimir Creative, LLC except where licensed otherwise.</p>
   </div>
 </div>

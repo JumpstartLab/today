@@ -11,12 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130730204022) do
+ActiveRecord::Schema.define(version: 20130903213106) do
 
   create_table "outlines", force: true do |t|
     t.string   "title"
     t.text     "body"
     t.date     "publish_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "location"
+    t.string   "username"
+    t.string   "github_id"
+    t.string   "avatar_url"
+    t.string   "gravatar_id"
+    t.boolean  "is_admin",    default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

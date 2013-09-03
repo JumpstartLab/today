@@ -7,4 +7,9 @@
       <%= yield :navigation %>
     </ul>
   </div>
+  <div id="notifications">
+    <% flash.each do |message| %>
+      <%= message.last %>
+    <% end %>
+  </div>
 </div>

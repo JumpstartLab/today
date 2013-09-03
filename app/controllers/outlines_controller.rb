@@ -1,5 +1,7 @@
 class OutlinesController < ApplicationController
 
+  before_action :require_login, only: [ :new, :create, :edit, :update ]
+
   def index
     @outlines = Outline.all.group_by { |outline| outline.publish_date.year }
     @outlines.each do |year,outlines|

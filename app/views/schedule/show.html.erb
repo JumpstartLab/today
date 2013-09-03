@@ -56,11 +56,16 @@
 </script>
 
 <%= content_for :footer do %>
-  <li><%= link_to "new", new_outline_path(outline: { publish_date: @schedule.current.to_param }) %></li>
-  <% if @schedule.can_edit? %>
+
+  <% if current_user.admin? %>
+    <li><%= link_to "new", new_outline_path(outline: { publish_date: @schedule.current.to_param }) %></li>
+  <% end %>
+
+  <% if @schedule.can_edit? and current_user.admin? %>
     <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
   <% end %>
   <li>
     <%= link_to "calendar", outlines_path %>
   </li>
+
 <% end %>
