@@ -39,6 +39,6 @@ class Github
   end
 
   def self.user_agent
-    'github.com:JumpstartLab/enrollist'
+    'github.com:JumpstartLab/today'
   end
 end
