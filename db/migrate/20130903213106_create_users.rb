@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string 'email'
       t.string 'location'
       t.string 'username'
-      t.string 'github_id'
+      t.integer 'github_id'
       t.string 'avatar_url'
       t.string 'gravatar_id'
       t.boolean 'is_admin', default: false
