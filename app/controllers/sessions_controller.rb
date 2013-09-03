@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
     rescue => e
       logger.error e
       flash[:error] = "We're having trouble with Github logins right now. Please come back later."
-      redirect_to root_path
+      redirect_to(root_path) and return
     end
 
     if current_user.guest?
