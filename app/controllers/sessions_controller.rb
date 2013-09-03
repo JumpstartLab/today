@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
       user = Authentication.perform(params[:code])
       login(user)
     rescue => e
-      logger.error e
+      puts e
       flash[:error] = "We're having trouble with Github logins right now. Please come back later."
       redirect_to(root_path) and return
     end
