@@ -24,6 +24,7 @@ class SessionsController < ApplicationController
       user = Authentication.perform(params[:code])
       login(user)
     rescue => e
+      logger.warn e
       flash[:error] = "We're having trouble with logins right now. Please come back later."
     end
 
