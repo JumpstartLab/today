@@ -24,18 +24,15 @@ class SessionsController < ApplicationController
       user = Authentication.perform(params[:code])
       login(user)
     rescue => e
-      logger.warn e
+      logger.error e
       flash[:error] = "We're having trouble with Github logins right now. Please come back later."
+      redirect_to root_path
     end
 
     if current_user.guest?
       flash[:error] = "We're unable to log you in right now. Please come back later."
     end
 
-    if current_user.admin?
-      redirect_to root_path
-    else
-      redirect_to root_path
-    end
+    redirect_to root_path
   end
 end
