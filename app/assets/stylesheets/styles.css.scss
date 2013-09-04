@@ -1019,3 +1019,20 @@ input[type="submit"]:hover, .btn a:hover {
   padding-left: 30px;
   font-size: 20px;
 }
+
+#results {
+  margin-top: 20px;
+}
+
+#results .term {
+  color: #fc9b15;
+}
+
+#results .result {
+  margin-top: 20px;
+}
+
+#results .result .content {
+  background-color: #EEE;
+  padding: 20px;
+}

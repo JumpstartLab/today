@@ -4,8 +4,10 @@ Simple outline management
 
 ```
 bundle install
+createdb today_development
 rake db:migrate
 rake import
+rake pg_search:multisearch:rebuild[Outline]
 rails s
 ```
 

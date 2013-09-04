@@ -1,0 +1,18 @@
+<%= form_tag search_path, method: :get do %>
+
+  <h1><%= label_tag :search, "Search" %></h1>
+  <%= text_field_tag :search, @search, size: 120 %>
+
+  <%= submit_tag "submit" %>
+
+<% end %>
+
+<div id="results">
+
+  <h2>
+    <%= pluralize(@results.count,"Results") %>
+    for "<span class='term'><%= @search %></span>"</h2>
+
+  <%= render partial: "search/result", collection: @results %>
+
+</div>

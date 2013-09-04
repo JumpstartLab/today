@@ -1,0 +1,6 @@
+<div class="result">
+  <h3><%= link_to result.searchable.title, schedule_path(result.searchable) %></h3>
+  <div class="content">
+    <%= result.searchable.body_as_html.html_safe %>
+  </div>
+</div>

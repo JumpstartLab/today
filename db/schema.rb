@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903213106) do
+ActiveRecord::Schema.define(version: 20130904162642) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "outlines", force: true do |t|
     t.string   "title"
@@ -21,12 +24,20 @@ ActiveRecord::Schema.define(version: 20130903213106) do
     t.datetime "updated_at"
   end
 
+  create_table "pg_search_documents", force: true do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
     t.string   "location"
     t.string   "username"
-    t.string   "github_id"
+    t.integer  "github_id"
     t.string   "avatar_url"
     t.string   "gravatar_id"
     t.boolean  "is_admin",    default: false

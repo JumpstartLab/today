@@ -4,19 +4,17 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
-group :test, :development do
-  gem 'sqlite3'
-end
-
 group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
+
+gem 'pg'
+gem 'pg_search'
 
 gem 'redcarpet'
 gem 'rouge'

@@ -1,6 +1,8 @@
 require 'markdown'
 
 class Outline < ActiveRecord::Base
+  include PgSearch
+  multisearchable against: [ :title, :body ]
 
   def self.today
     find_by_publish_date(Time.now.to_date)
