@@ -1,6 +1,3 @@
-ENV['GITHUB_CLIENT_ID'] = "69f964ba7626c26ff741"
-ENV['GITHUB_CLIENT_SECRET'] = "dadcfed607b68c9a15625ff2fe513c21cefe606e"
-
 class Github
   def self.login_url
     "https://github.com/login/oauth/authorize?client_id=#{ENV.fetch('GITHUB_CLIENT_ID')}"
