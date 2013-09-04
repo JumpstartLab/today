@@ -64,6 +64,11 @@
   <% if @schedule.can_edit? and current_user.admin? %>
     <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
   <% end %>
+
+  <% if @schedule.can_edit? and current_user.admin? %>
+    <li><%= link_to "delete", outline_path(@schedule.current), method: :delete %></li>
+  <% end %>
+
   <li>
     <%= link_to "calendar", outlines_path %>
   </li>

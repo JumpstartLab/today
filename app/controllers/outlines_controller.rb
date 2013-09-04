@@ -1,6 +1,6 @@
 class OutlinesController < ApplicationController
 
-  before_action :require_login, only: [ :new, :create, :edit, :update ]
+  before_action :require_login, except: [ :index, :show ]
 
   def index
     @outlines = Outline.all.group_by { |outline| outline.publish_date.year }
@@ -40,6 +40,12 @@ class OutlinesController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    outline_param = current_outline.to_param
+    current_outline.delete
+    redirect_to schedule_path(outline_param)
   end
 
   private
