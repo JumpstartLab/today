@@ -8,9 +8,10 @@ Today::Application.routes.draw do
   get "/search", to: "search#index", as: :search
   post "/search", to: "search#post", as: :search_for
 
+  resources :outlines
+
   get "/:date_string", to: "schedule#show", as: "schedule"
 
   root to: "schedule#show"
-  resources :outlines
 
 end
