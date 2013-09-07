@@ -1,6 +1,6 @@
 <div class="calendars">
 <% @outlines.each do |year,outlines_by_month| %>
-  <% outlines_by_month.each do |month,outlines| %>
+  <% outlines_by_month.sort_by {|m,outlines| m }.each do |month,outlines| %>
 
     <div class="month">
       <%= render partial: "month", locals: { year: year, month: month, outlines: outlines } %>
