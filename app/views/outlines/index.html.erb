@@ -1,6 +1,8 @@
 <div class="calendars">
-<% @outlines.each do |year,outlines_by_month| %>
-  <% outlines_by_month.sort_by {|m,outlines| m }.each do |month,outlines| %>
+<!-- Show the calendar in descending order, latest year at the top and latest month -->
+<% @outlines.sort_by {|y,data| y * -1 }.each do |year,outlines_by_month| %>
+
+  <% outlines_by_month.sort_by {|m,outlines| m * -1 }.each do |month,outlines| %>
 
     <div class="month">
       <%= render partial: "month", locals: { year: year, month: month, outlines: outlines } %>
