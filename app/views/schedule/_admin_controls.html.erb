@@ -1,0 +1,23 @@
+<% if @schedule.has_revisions? %>
+  <div class="revisions">
+    <b>Revisions</b>:
+
+    <%= link_to "Current", schedule_path(@schedule.current) %> |
+
+    <% @schedule.revisions.each_with_reverse_index do |schedule,index| %>
+      <%= link_to "<b>[#{index}]</b> #{time_ago_in_words(schedule.created_at)} ago".titleize.html_safe,
+            schedule_path(@schedule.current,revision: index) %> |
+    <% end.join() %>
+
+  </div>
+<% end %>
+
+<li><%= link_to "new", new_outline_path(outline: { publish_date: @schedule.current.to_param }) %></li>
+
+<% if @schedule.can_edit? %>
+  <li><%= link_to "edit", "", class: "toggle-content-edit" %></li>
+<% end %>
+
+<% if @schedule.can_edit? %>
+  <li><%= link_to "delete", schedule_path(@schedule.current), method: :delete %></li>
+<% end %>
