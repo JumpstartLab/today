@@ -4,11 +4,20 @@
   </h1>
 </div>
 
+<% outline_date_params = outlines.map {|o| o.to_param } %>
+
 <%= calendar_for(outlines, year: year, month: month) do |t| %>
   <%= t.head('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday') %>
   <%= t.day do |day, outlines| %>
     <%= day.day %>
+
     <br/>
+
+    <% if current_user.admin? %>
+      <% date_param = day.to_s.gsub("-","") %>
+      <%= link_to "[+]", new_outline_path(outline: { publish_date: date_param }) unless outline_date_params.include?(date_param) %>
+    <% end %>
+
     <% outlines.each do |outline| %>
       <%= link_to outline.title, schedule_path(outline) %>
     <% end %>
