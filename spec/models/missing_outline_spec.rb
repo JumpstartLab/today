@@ -18,6 +18,10 @@ describe MissingOutline do
     expect(subject.publish_date).to eq Time.now.to_date
   end
 
+  it "has no additional versions (revisions)" do
+    expect(subject.versions).to eq([])
+  end
+
   it "returns the correct #to_param" do
     expected_to_param = Time.now.to_date.strftime("%Y%m%d")
     expect(subject.to_param).to eq expected_to_param

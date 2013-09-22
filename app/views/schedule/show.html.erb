@@ -10,7 +10,6 @@
   <li>
     <%= next_link @schedule.next %>
   </li>
-
 <% end %>
 
 <div class="content-live">
@@ -57,6 +56,21 @@
 
 <%= content_for :footer do %>
 
+  <% if @schedule.has_revisions? %>
+
+    <div class="revisions">
+      <b>Revisions</b>:
+
+      <%= link_to "Current", schedule_path(@schedule.current) %> |
+
+      <% @schedule.revisions.each_with_reverse_index do |schedule,index| %>
+        <%= link_to "<b>[#{index}]</b> #{time_ago_in_words(schedule.created_at)} ago".titleize.html_safe,
+              schedule_path(@schedule.current,revision: index) %> |
+      <% end.join() %>
+
+    </div>
+  <% end %>
+
   <% if current_user.admin? %>
     <li><%= link_to "new", new_outline_path(outline: { publish_date: @schedule.current.to_param }) %></li>
   <% end %>
@@ -66,7 +80,7 @@
   <% end %>
 
   <% if @schedule.can_edit? and current_user.admin? %>
-    <li><%= link_to "delete", outline_path(@schedule.current), method: :delete %></li>
+    <li><%= link_to "delete", schedule_path(@schedule.current), method: :delete %></li>
   <% end %>
 
   <li>

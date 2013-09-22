@@ -8,6 +8,10 @@ class MissingOutline
     publish_date.strftime("%Y%m%d")
   end
 
+  def versions
+    []
+  end
+
   def title
     %{Missing}
   end

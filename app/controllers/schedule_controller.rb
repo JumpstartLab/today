@@ -1,7 +1,7 @@
 class ScheduleController < ApplicationController
 
   def show
-    @schedule = Schedule.new(outline)
+    @schedule = Schedule.new(outline,revision: params[:revision])
   end
 
   def outline

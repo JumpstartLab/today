@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 group :development do
   gem 'dotenv-rails'
   gem 'quiet_assets'
+  gem 'pry'
 end
 
 group :test do
@@ -20,6 +21,8 @@ end
 
 gem 'pg'
 gem 'pg_search'
+
+gem 'paper_trail', '>= 3.0.0.beta1'
 
 gem 'redcarpet'
 gem 'rouge'
