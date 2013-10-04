@@ -65,7 +65,7 @@ class OutlinesController < ApplicationController
   end
 
   def default_new_params
-    { publish_date: Time.now.to_date }.merge(outline_params)
+    { title: Time.now.to_date.to_s, publish_date: Time.now.to_date }.merge(outline_params)
   end
 
 end
