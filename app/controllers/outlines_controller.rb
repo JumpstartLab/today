@@ -65,7 +65,12 @@ class OutlinesController < ApplicationController
   end
 
   def default_new_params
-    { title: Time.now.strftime("%y%m%d"), publish_date: Time.now.to_date }.merge(outline_params)
+    outline_date = DateTime.parse(outline_params[:publish_date]).to_date
+
+    {
+      title: outline_date.strftime("%y%m%d"),
+      publish_date: outline_date
+    }.merge(outline_params)
   end
 
 end
