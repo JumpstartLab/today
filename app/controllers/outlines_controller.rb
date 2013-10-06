@@ -70,7 +70,7 @@ class OutlinesController < ApplicationController
     outline_date = DateTime.parse(outline_params[:publish_date]).to_date
 
     feed = Calendar.new.get
-    entries = feed.entries(start_date: outline_date).sort_by { |e| e.start_date }
+    entries = feed.entries(start_date: outline_date).sort_by { |e| e.start_date }.reverse
     body = entries.map {|entry| "## #{entry} "}.join("\n")
 
     {
