@@ -1,0 +1,45 @@
+<entry>
+    <id>http://www.google.com/calendar/feeds/casimircreative.com_lq2r68d0ovv782bmis46oo4dpk%40group.calendar.google.com/public/full/o9c85afob670lcn01j5v2avne4</id>
+    <published>2013-09-02T19:17:14.000Z</published>
+    <updated>2013-09-02T19:17:47.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event" />
+    <title type="text">Exercism Pairing</title>
+    <content type="text" />
+    <link rel="alternate" type="text/html" href="http://www.google.com/calendar/event?eid=bzljODVhZm9iNjcwbGNuMDFqNXYyYXZuZTRfMjAxMzA5MThUMTUwMDAwWiBjYXNpbWlyY3JlYXRpdmUuY29tX2xxMnI2OGQwb3Z2NzgyYm1pczQ2b280ZHBrQGc" title="alternate" />
+    <link rel="self" type="application/atom+xml" href="http://www.google.com/calendar/feeds/casimircreative.com_lq2r68d0ovv782bmis46oo4dpk%40group.calendar.google.com/public/full/o9c85afob670lcn01j5v2avne4" />
+    <author>
+      <name>Jeff Casimir</name>
+      <email>jeff@casimircreative.com</email>
+    </author>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed" />
+    <gd:where valueString="" />
+    <gd:who email="casimircreative.com_lq2r68d0ovv782bmis46oo4dpk@group.calendar.google.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="gschool-1" />
+    <gd:recurrence>DTSTART;TZID=America/Denver:20130918T090000
+DTEND;TZID=America/Denver:20130918T093000
+RRULE:FREQ=WEEKLY;UNTIL=20140226T160000Z;BYDAY=WE
+BEGIN:VTIMEZONE
+TZID:America/Denver
+X-LIC-LOCATION:America/Denver
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0600
+TZNAME:MDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0600
+TZOFFSETTO:-0700
+TZNAME:MST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE</gd:recurrence>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque" />
+    <gCal:anyoneCanAddSelf value="false" />
+    <gCal:guestsCanInviteOthers value="true" />
+    <gCal:guestsCanModify value="false" />
+    <gCal:guestsCanSeeGuests value="true" />
+    <gCal:sequence value="1" />
+    <gCal:uid value="o9c85afob670lcn01j5v2avne4@google.com" />
+  </entry>

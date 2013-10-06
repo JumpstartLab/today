@@ -65,11 +65,18 @@ class OutlinesController < ApplicationController
   end
 
   def default_new_params
+    require './lib/calendar'
+
     outline_date = DateTime.parse(outline_params[:publish_date]).to_date
+
+    feed = Calendar.new.get
+    entries = feed.entries(start_date: outline_date).sort_by { |e| e.start_date }
+    body = entries.map {|entry| "## #{entry} "}.join("\n")
 
     {
       title: outline_date.strftime("%y%m%d"),
-      publish_date: outline_date
+      publish_date: outline_date,
+      body: body
     }.merge(outline_params)
   end
 
