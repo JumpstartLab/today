@@ -14,7 +14,7 @@
     <br/>
 
     <% if current_user.admin? %>
-      <% date_param = day.strftime("%y%m%d") %>
+      <% date_param = day.strftime("%Y%m%d") %>
       <%= link_to "[+]", new_outline_path(outline: { publish_date: date_param }) unless outline_date_params.include?(date_param) %>
     <% end %>
 
